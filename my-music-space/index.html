@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Music Space</title>
+
+    <style>
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            line-height: 1.6;
+            transition: 0.3s;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        header {
+            height: 100vh;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.7),
+            rgba(0,0,0,0.7)),
+            url("img/rock-wallpaper.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 20px;
+        }
+
+        .hero {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #1DB954;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #1DB954;
+            color: black;
+            padding: 14px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #1ed760;
+        }
+
+        /* ---------- NAV ---------- */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.9);
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #1DB954;
+        }
+
+        /* ---------- SECTIONS ---------- */
+
+        section {
+            padding: 80px 10%;
+        }
+
+        h2 {
+            color: #1DB954;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* ---------- CARDS ---------- */
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            width: 280px;
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        /* ---------- PLAYLIST ---------- */
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        a.song-link {
+            color: #6c63ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.song-link:hover {
+            color: #ff4d6d;
+        }
+
+        /* ---------- GALLERY ---------- */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ---------- BUTTON ---------- */
+
+        button {
+            background-color: #1DB954;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ---------- LIGHT MODE ---------- */
+
+        .light-mode {
+            background-color: #f4f4f4;
+            color: #222;
+        }
+
+        .light-mode .card {
+            background-color: white;
+        }
+
+        .light-mode nav {
+            background-color: rgba(255,255,255,0.9);
+        }
+
+        .light-mode nav a {
+            color: black;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="#inicio">Inicio</a>
+        <a href="#about">Sobre mí</a>
+        <a href="#playlist">Playlist</a>
+        <a href="#gallery">Galería</a>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+    <header id="inicio">
+
+        <div class="hero">
+
+            <h1>🎧 My Music Space</h1>
+
+            <p>
+                Music connects emotions, memories and moments.
+                Welcome to my personal musical world.
+            </p>
+
+            <a href="#playlist" class="btn">
+                Explore My Playlist
+            </a>
+
+            <br><br>
+
+            <button onclick="toggleTheme()">
+                Cambiar Tema
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2>🎵 Sobre mí</h2>
+
+        <p>
+            La música es una parte esencial de mi vida.
+            Me ayuda a relajarme, concentrarme y expresar emociones.
+            Disfruto descubrir nuevos artistas y escuchar música
+            mientras estudio, hago ejercicio o simplemente descanso.
+        </p>
+
+    </section>
+
+    <!-- FAVORITE ARTISTS -->
+
+    <section>
+
+        <h2>⭐ Artistas Favoritos</h2>
+
+        <div class="cards-container">
+
+            <div class="card">
+
+                <img src="img/RHCP.jpg" alt="Red Hot Chili Peppers">
+
+                <h3>Red Hot Chili Peppers</h3>
+
+                <p>
+                    Mi banda favorita de rock alternativo.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="img/harry-styles.jpg" alt="Harry Styles">
+
+                <h3>Harry Styles</h3>
+
+                <p>
+                    Su estilo musical y visual es increíble.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="img/twenty-one-pilots.jpg" alt="Twenty One Pilots">
+
+                <h3>Twenty One Pilots</h3>
+
+                <p>
+                    Su creatividad en la letra de sus canciones es impresionante.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PLAYLIST -->
+
+    <section id="playlist">
+
+        <h2>🎶 Playlist Favorita</h2>
+
+        <ul id="songs-list">
+
+            <li>
+                RHCP -
+                <a class="song-link"
+                href="https://www.youtube.com/watch?v=3G1hBRji01s"
+                target="_blank">
+
+                    Dosed
+
+                </a>
+            </li>
+
+            <li>
+                Twenty One Pilots -
+                <a class="song-link"
+                href="https://www.youtube.com/watch?v=uv_1AKKKJnk"
+                target="_blank">
+
+                    Levitate
+
+                </a>
+            </li>
+
+            <li>
+                Harry Styles -
+                <a class="song-link"
+                href="https://www.youtube.com/watch?v=cImvCoui6_4"
+                target="_blank">
+
+                    Little Freak
+
+                </a>
+            </li>
+
+            <li>
+                Kings of Leon -
+                <a class="song-link"
+                href="https://www.youtube.com/watch?v=SNKD32JOWEg"
+                target="_blank">
+
+                    Manhattan
+
+                </a>
+            </li>
+
+        </ul>
+
+        <br>
+
+        <p id="songs-counter"></p>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    <section id="gallery">
+
+        <h2>📸 Galería Musical</h2>
+
+        <div class="gallery">
+
+            <img src="img/RHCP.jpg" alt="RHCP">
+
+            <img src="img/harry-styles.jpg" alt="Harry Styles">
+
+            <img src="img/twenty-one-pilots.jpg" alt="Twenty One Pilots">
+
+            <img src="img/rock-wallpaper.jpg" alt="Rock Wallpaper">
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 My Music Space 🎧
+        </p>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // MENSAJE DE BIENVENIDA
+
+        alert("🎵 Bienvenido a My Music Space");
+
+
+        // CONTADOR DE CANCIONES
+
+        let songs = document.querySelectorAll("#songs-list li");
+
+        let totalSongs = songs.length;
+
+        document.getElementById("songs-counter").innerHTML =
+            "🎧 Total de canciones favoritas: " + totalSongs;
+
+
+        // CAMBIAR TEMA
+
+        function toggleTheme() {
+
+            document.body.classList.toggle("light-mode");
+
+        }
+
+    </script>
+
+</body>
+
+</html>
