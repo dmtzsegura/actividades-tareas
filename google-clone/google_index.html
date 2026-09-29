@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Clone</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #ffffff;
+    }
+
+    /* Logo de Google */
+    .logo-container {
+      margin-bottom: 25px;
+    }
+
+    .logo-container img {
+      width: 272px;
+      height: 92px;
+    }
+
+    /* Formulario y contenedor de búsqueda */
+    .search-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      max-width: 584px;
+      height: 46px;
+      border: 1px solid #dfe1e5;
+      border-radius: 24px;
+      padding: 0 14px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Microinteracción: Sombra al pasar el cursor o enfocar */
+    .search-box:hover,
+    .search-box:focus-within {
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+      border-color: rgba(223, 225, 229, 0);
+    }
+
+    .search-icon,
+    .mic-icon {
+      width: 20px;
+      height: 20px;
+      fill: #9aa0a6;
+    }
+
+    .search-input {
+      flex: 1;
+      height: 100%;
+      border: none;
+      outline: none;
+      padding: 0 12px;
+      font-size: 16px;
+      color: #202124;
+      background: transparent;
+    }
+
+    /* Botones de acción */
+    .buttons-container {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      background-color: #f8f9fa;
+      border: 1px solid #f8f9fa;
+      border-radius: 4px;
+      color: #3c4043;
+      font-size: 14px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: #dadce0;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      color: #202124;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo">
+  </div>
+
+  <form class="search-form" id="search-form">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+      
+      <input type="text" class="search-input" id="search-input" autofocus autocomplete="off">
+      
+      <svg class="mic-icon" viewBox="0 0 24 24">
+        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+      </svg>
+    </div>
+
+    <div class="buttons-container">
+      <button type="submit" class="btn" id="btn-search">Buscar con Google</button>
+      <button type="button" class="btn" id="btn-lucky">Me siento con suerte</button>
+    </div>
+  </form>
+
+  <script>
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const btnLucky = document.getElementById('btn-lucky');
+
+    // Función genérica para redireccionar a la búsqueda de Google
+    function performSearch(isLucky = false) {
+      const query = searchInput.value.trim();
+      if (query !== '') {
+        const encodedQuery = encodeURIComponent(query);
+        let url = `https://www.google.com/search?q=${encodedQuery}`;
+        
+        // Parámetro opcional para el botón 'Me siento con suerte'
+        if (isLucky) {
+          url += '&btnI=I';
+        }
+        
+        window.location.href = url;
+      }
+    }
+
+    // Evento al presionar 'Enter' o enviar el formulario mediante "Buscar con Google"
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      performSearch();
+    });
+
+    // Evento para el botón "Me siento con suerte"
+    btnLucky.addEventListener('click', () => {
+      performSearch(true);
+    });
+  </script>
+</body>
+</html>
