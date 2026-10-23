@@ -31,4 +31,30 @@ Al ser un conjunto de prueba pequeño (36 vinos), se recomienda validar con más
 
 ---
 
+## Lab 8 – Pipeline de Machine Learning: Netflix Customer Churn
+
+Predicción de cancelación de clientes (churn) con un pipeline completo de scikit-learn.
+
+**Archivos**
+- `netflix_customer_churn.csv` – Dataset (Kaggle, sintético, CC0): 5000 clientes, 14 columnas, clases balanceadas.
+- `Lab8_Netflix_Churn_Pipeline.ipynb` – Cuaderno con EDA, pipeline, evaluación y búsqueda de hiperparámetros.
+- `modelo_churn_netflix.pkl` – Pipeline entrenado (Random Forest), exportado con joblib.
+
+**Proceso**
+- EDA numérico y categórico.
+- Feature engineering con `FunctionTransformer`: `pago_recurrente`, `horas_por_perfil`, `inactivo_30`.
+- Preprocesamiento con `ColumnTransformer`: `StandardScaler` + `OneHotEncoder`.
+- Modelo base: Regresión Logística (F1 = 0.91).
+- Validación cruzada estratificada de 5 folds (F1 = 0.913 ± 0.004).
+- `GridSearchCV` comparando Regresión Logística y Random Forest.
+
+**Resultados**
+| Modelo | F1 (CV) | Accuracy (prueba) |
+|---|---|---|
+| Regresión Logística | 0.913 | 0.909 |
+| Random Forest (mejor) | 0.983 | 0.989 |
+
+> Nota: el alto desempeño se explica en parte porque el dataset es sintético.
+> Para cargar el `.pkl` hay que definir antes la función `crear_variables`.
+
 👩‍💻: Daniela Martínez Segura
